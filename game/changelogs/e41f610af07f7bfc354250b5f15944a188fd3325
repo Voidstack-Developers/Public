@@ -1,0 +1,93 @@
+> Title: Development 1.0.0
+> Note: This is the Development release of 1.0.0, this contains untested features, and stuff that may be removed from the release of 1.0.0.
+
+> What does this release contain:
+- Vehicles
+    - Added `Northstar W-200`
+        * Type: Pickup
+        * Armour: None
+        * Seats: 2
+        * Top Speed: 90 Km/h (55 mph)
+        * Attributes:
+            * Has the ability to have PKM mounted on the bed
+    - Added `Haldor 940`
+        * Type: Sedan
+        * Armour: None
+        * Seats: 4
+        * Top Speed: 160 Km/h (99 mph)
+        * Attributes: None
+    - Added `Humvee`
+        * Type: SUV
+        * Armour: Light
+        * Seats: 4
+        * Top Speed: 113 Km/h (70 mph)
+        * Attributes: None
+    - Added `BTR-80`
+        * Type: Armoured Personnel Carrier (APC)
+        * Armour: Heavy
+        * Seats: 10
+        * Top Speed: 80 Km/h (50 mph)
+        * Attributes:
+            * Can go into Water (Top Speed: 9 Km/h (5 mph))
+    - Added `Bell UH-1`
+        * Type: Helicopter
+        * Armour: None
+        * Seats: 6
+        * Top Speed: ~220 Km/h (~137 mph)
+        * Attributes: None
+- Firearms
+    - Added `Glock 17`
+        * Type: Pistol
+        * Muzzle Velocity: ~375 m/s (~1,230 ft/s)
+        * Base Magazine Capacity: 17 rounds
+        * Max Effective Range: ~50m (~55 yd)
+        * Attributes: None
+    - Added `AK 47`
+        * Type: Rifle
+        * Muzzle Velocity: ~715 m/s (~2,346 ft/s)
+        * Base Magazine Capacity: 30 rounds
+        * Max Effective Range: ~350m (~383 yd)
+        * Attributes: None
+    - Added `PKM`
+        * Type: Light Machine Gun (LMG)
+        * Muzzle Velocity: ~825 m/s (~2,707 ft/s)
+        * Base Magazine Capacity: 100 rounds
+        * Max Effective Range: ~1,000m (~1,094 yd)
+        * Attributes: None
+    - Added `R11 RSASS`
+        * Type: Sniper Rifle
+        * Muzzle Velocity: ~790 m/s (~2,592 ft/s)
+        * Base Magazine Capacity: 20 rounds
+        * Max Effective Range: ~800m (~875 yd)
+        * Attributes: None
+    - Added `RPG-7`
+        * Type: Explosive
+        * Max Effective Range (Average): ~200 m/s (~219 yd)
+        * Supported Rockets: HEAT, FRAG, and Thermobaric
+        * Rocket Speed (Average): ~294 m/s (~965 ft/s)
+- NPCs
+    - Added `Civilian`
+    - Added `Zombies`
+        * Types: Normal, Radioactive
+    - Added `Bandits`
+    - Added `Traders`
+        * Types: Shop
+- General Gameplay Enhancements
+    - Server will now be able to handle more then 15 players at the same time
+    - The game will now adjust it's rendering of all elements of the game based on FPS
+- General Player
+    - Added `Inventory Weight` (Measured in Kg)
+    - Added `Blood` (Measured in mL)
+    - Added `Stamina` (Affected by `Inventory Weight`)
+    - Added `Radioactivity` (Measured in mSv/h)
+    - Added `Squads`
+        * You can now Invite people through the lobby or active in game.
+        * This will highlight them on the map.
+    - Added `Proximity Chat` & `Radios`
+        * Radios are operationable through Voice Chat or Chat Messages.
+    - Added `Character Creation` / `Character Customization`
+        * New players must create their Character for the first time.
+        * Active Players can customize their character in the lobby
+        * This only provides support for doing:
+            * Hair & Beard
+            * Gender
