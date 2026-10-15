@@ -1,1 +1,19 @@
-"Development 1.0.0"
+> Title: Development 1.0.0
+> Note: This is the Development release of 1.0.0, this contains untested features, and stuff that may be removed from the release of 1.0.0.
+
+> What does this release add/remove/change:
+- Added Vehicles (Helicopters, Cars)
+        - Cars: BTR80, HMMWV, Haldor 940, Northstar W-200
+        - Helicopters: Bell UH-1
+- Added Firearms (LMGs, Rifles, Pistols, Snipers, Explosives)
+        - Pistols: Glock 17
+        - Rifles: AK-47
+        - LMGs: PKM
+        - Snipers: Remington R11 RSASS
+        - Explosives: RPG-7
+- Added NPCs (Zombies, Traders, Bandits, Civilians)
+- Added General Gameplay Enhancements
+- Added Player Attributes (Inventory Weight, Blood, Stamina, Radioactivity)
+- Added Squad Support (Inviting Friends to your Squad will highlight them on the map, and benefit in the lobby.)
+- Added Proximity Chat, and Radios that function both over Voice Chat & Chat messages.
+- Added Character Creation on First Join (Disabled on Development Branch)
