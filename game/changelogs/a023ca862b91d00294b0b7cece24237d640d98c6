@@ -1,0 +1,205 @@
+> Title: Development 1.0.1
+> Note: This is the Development release of 1.0.1, this contains untested features, and stuff that may be removed from the release of 1.0.1.
+
+> What does this release contain:
+- Doors
+    - Added `Interactive Doors`
+        * Look at a door to see its interaction points (Handle, Hinge, Lock, Kick)
+        * Reach: 7 studs
+        * Actions:
+            * Open / Close (Handle)
+            * Open slightly (Hinge): opens the door 14° so you can peek through
+            * Nudge open / closed: scroll the mouse wheel to move the door 12° at a time
+            * Push open: walk into a door that's open slightly (from the side it swings away from) and it swings fully open
+            * Kick: breaches the door (1.1 second cooldown between kicks)
+            * Lock / Unlock: only from the inside of exterior doors
+            * Pick lock: only from the outside of a door you know is locked (see `Lockpicking`)
+        * Locked doors:
+            * Trying to open a locked door rattles it and tells you it's locked
+            * Once you know a door is locked, it only offers `Kick` and `Pick lock`
+            * Kicking a locked door has a 40% chance to break it from the push side, and 20% from the pull side
+        * Broken doors:
+            * Every door you kick open is broken
+            * Broken doors can still be closed, but anyone can walk straight through them
+            * Broken doors can no longer be locked
+        * Door speeds:
+            * Normal: 200°/s
+            * Slow (peeking / nudging): 90°/s
+            * Breach (kicked): 900°/s
+        * Wooden and metal doors have their own sounds for opening, closing, creaking, rattling, locking, kicking and breaching
+    - Map changes
+        * The outside garage door of the Town House is now locked
+- Lockpicking
+    - Added `Lockpick set`
+        * Type: Misc
+        * Size: 1x1
+        * Stacks: up to 6 (each one is a single pick)
+        * Value: 1,200
+        * Weight: 0.05 Kg
+        * Shows as a zipped leather pouch with the picks sticking out
+        * Works from your pockets, rig or backpack
+    - Added `Lockpicking Minigame`
+        * Use `Pick lock` on a locked door you're outside of
+        * The camera moves in close and the background blurs out:
+            * You first see the pick slide into the keyhole from the front
+            * The lock then swings around to a cut-open side view, showing every pin and spring
+        * Controls:
+            * [A] / [D]: move the pick between pins
+            * [W]: push the pin (it shoots up and springs back down)
+            * [Left Mouse Button]: set the pin
+            * [F]: abort
+        * Setting a pin:
+            * Each pin has a green zone at the line where it needs to sit; the zone lights up when it's safe to set
+            * Set it while it's in the zone and the pin locks into place, and the pick moves on to the next pin
+            * Set every pin to unlock the door
+        * Failing:
+            * Setting at the wrong time drops that pin back down (the other set pins stay set)
+            * Every failed set wears your pick, and after 15 failed sets the pick snaps
+            * A snapped pick uses up one lockpick and drops every pin
+            * Running out of lockpicks ends the minigame
+        * Lock types:
+            * Door: 6 pins, brass plate
+            * Town House: 5 pins, nickel plate
+            * Crate: 4 pins, rusty plate
+        * Each lock has random pin heights (5 possible depths), which stay the same until it's picked
+        * Pushing, setting, failing and snapping all have their own sounds; nearby players hear the sets, fails and snaps
+- Health & Medical
+    - Added `Health`
+        * Every player and NPC now has 100 Health
+        * Deaths now record a cause: Wounds, Bleeding, Organ damage, Blunt force, Explosion, Radiation, Starvation, Void or Admin
+    - Added `Body Regions`
+        * Each body region now has its own health:
+            * Head: 35
+            * Thorax: 80
+            * Stomach: 70
+            * Left Arm / Right Arm: 60
+            * Left Leg / Right Leg: 65
+        * Each region tracks its own wounds:
+            * Light bleeding
+            * Heavy bleeding (12 mL/s or more)
+            * Fractures
+    - Added `Organ Damage`
+        * Bullets that reach an organ cause their own bleeding, pain and damage:
+            * Brain: always lethal
+            * Heart: 140 mL/s bleeding, can cause `Cardiac Arrest`
+            * Aorta: 160 mL/s bleeding
+            * Lungs: 10 mL/s bleeding, can cause a `Collapsed Lung`
+            * Liver: 30 mL/s bleeding
+            * Kidneys: 22 mL/s bleeding, very painful
+            * Stomach: 6 mL/s bleeding
+            * Spine: 4 mL/s bleeding, can cause `Paralysis`
+            * Femoral arteries (legs): 50 mL/s bleeding
+        * Other conditions: `Leg Fracture`, `Arm Fracture`, `Concussion`
+    - Changes to `Blood` & `Pain`
+        * Blood volume: 5,000 mL
+        * You fall unconscious below 3,000 mL and die below 2,200 mL
+        * Too much pain (90 or more) sends you into shock for 5 to 12 seconds
+        * Pain fades faster while you're unconscious
+        * While unconscious you now see when you'll wake up
+    - Changes to `Medical Items`
+        * `Army bandage`: stops bleeding below 12 mL/s, halves heavier bleeding and reduces pain
+        * `CAT tourniquet`: stops limb bleeding, but causes pain
+- Player Interaction
+    - Added `Player Menu`
+        * Open it on another player or NPC to choose an action
+        * Actions:
+            * `Health checkup`: shows their pulse, pain, blood level and any conditions (Unconscious, Cardiac Arrest, Collapsed Lung, Concussion, Paralysed, Dead)
+            * `Drag` / `Let go`
+            * `Invite to squad`
+    - Added `Dragging`
+        * You can drag players and NPCs that are unconscious or zip-tied
+        * Zombies and Traders can't be dragged
+        * Reach: 6 studs
+        * You walk at 55% speed while dragging
+        * The drag breaks if they end up more than 11 studs away
+    - Changes to `Zip Ties`
+        * Tying someone up takes 2.5 seconds
+        * Cutting someone free takes 1.5 seconds
+        * Restrained players walk at 60% speed
+        * Restrained players can now struggle free: mash [X] 25 times. Progress drains if you slow down
+- Weather
+    - Added `Rain`
+        * The server checks the weather every 90 seconds, with a 40% chance of rain
+        * Rain intensity ranges from 25% to 100%, and builds up gradually
+        * Wind of up to 14 studs/s pushes the rain sideways
+        * Clouds build up with the rain: the sky becomes fully overcast and the clouds thicken and turn grey
+    - Added `Storms` & `Lightning`
+        * Rain above 65% intensity turns into a storm
+        * Lightning strikes every 6 to 26 seconds, between 80 and 1,100 studs away from players
+        * Storm clouds turn dark grey, and lightning lights them up
+- Footprints
+    - Added `Footprints`
+        * Walking through mud, dirt, sand, snow, water, blood or other spilled liquids coats your boots
+        * Once you step off, your boots leave prints with the tread of your sole
+        * Prints get fainter with every step until your boots are clean:
+            * Mud: 12 steps
+            * Blood: up to 14 steps (fewer if the blood is drying)
+            * Other spilled liquids: 8 steps
+            * Water: 6 steps
+            * Dirt: 5 steps
+            * Sand: 4 steps
+            * Snow: 3 steps
+        * Prints fade away over time:
+            * Blood: 160 seconds (darkens from red to dried brown as it fades)
+            * Mud: 140 seconds
+            * Dirt: 80 seconds
+            * Sand: 50 seconds
+            * Snow: 30 seconds
+            * Water: 25 seconds
+        * Your boots dry off 90 seconds after you last stepped in something
+        * Prints only form on solid ground (not on vehicles)
+        * Everyone can see prints within 140 studs
+        * Up to 220 prints at once (fewer on lower graphics settings)
+- Visuals & Effects
+    - Added `Blood Effects`
+        * Gunshot wounds leave blood splatter on nearby surfaces, stretched in the direction of the shot
+        * Blood on walls slowly runs downward and drips onto the floor
+        * Wounded players drip blood as they move
+        * Bodies leave a blood pool that grows over time
+        * Blood darkens as it dries (about 2.5 minutes)
+        * Up to 160 blood splats at a time; each one fades after 100 seconds
+        * Blood is cleaned up once the body it came from is gone
+        * Armour that stops a bullet also stops the blood
+    - Added `Liquid Simulation`
+        * Spilled liquids (water, blood and more) now flow and drip off edges
+        * Liquids leave puddles and stains that evaporate over time (water after 90 seconds, blood after 100 seconds)
+    - Added `Vehicle Wheel Spray`
+        * Vehicles throw up water splashes and mud from their wheels when driving through puddles and mud
+        * Visible up to 260 studs away
+    - Changes to `Scopes`
+        * Scopes now show the eyepiece and a dark vignette when you look through them
+        * When scoped, your weapon now has weight: it lags slightly behind where you look (up to 1.5°) and sways 4 times as much
+- Audio
+    - Added `Acoustics`
+        * Gunshots, footsteps, impacts and explosions now echo off the world around you
+        * Over 40 materials absorb and reflect sound differently (concrete and metal echo, while fabric, carpet and snow soak it up)
+        * Indoors and outdoors now sound different
+- Firearms & Ballistics
+    - Changes to `Ballistics`
+        * Every round now has a real mass and diameter, which affect drop, energy loss and penetration
+        * Penetration through walls and other materials has been reworked
+    - Changes to `RPG-7`
+        * Your camera no longer clips into the launcher when you fire while aiming
+    - Changes to `Hit Registration`
+        * Shots are now checked against where the target was at the moment you fired, so hits register more reliably for players with higher ping
+- Inventory & Economy
+    - Changes to `Backpack`
+        * Your backpack now counts the same as your pockets and rig
+        * You can reload magazines, load loose rounds, and use zip ties, radios and lockpicks straight from your backpack
+    - Changes to `Cash`
+        * Cash stacks up to 500,000 per stack
+        * Earned cash goes into your pockets first, then your backpack
+        * Purchases take cash from any of your stacks
+    - Changes to `HUD`
+        * Food, Water and Stamina bars have been redesigned
+        * The weapon slot list now shows empty slots as "Empty"
+- Saving
+    - Your profile (inventory, appearance and vitals) is now saved when you die, extract, leave, or when the server shuts down
+    - If a save fails, the game keeps retrying (every 20 seconds, up to 5 minutes) until it goes through
+- General Gameplay Enhancements
+    - The game now detects your device (PC, Console or Mobile) and adjusts effects to match:
+        * PC: full liquids (260 particles), full blood effects and rain
+        * Console: liquids (200 particles), 80% rain
+        * Mobile: no liquid simulation, reduced blood effects, 40% rain, and lighter sound processing for better FPS
+    - Improved server stability, with limits on how often the server accepts requests from each player
+    - Improved server-side protection against exploits
